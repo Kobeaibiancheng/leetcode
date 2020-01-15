@@ -19,6 +19,7 @@ public class TwoQueImpSta {
             this.que1.offer(x);
         }
     }
+	
     /** Removes the element on top of the stack and returns that element. */
     public int pop() {
         int size = 0;
