@@ -1,6 +1,7 @@
 public class MinArray {
     /**
      * 旋转数组的最小值
+     *
      * @param array
      * @return
      */
