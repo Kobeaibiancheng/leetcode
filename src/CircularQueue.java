@@ -1,18 +1,18 @@
 
 
-public class CircularQueue {
-    public int[] elem;
+public class CircularQueue<T> {
+    public T[] elem;
     int front;//队首下标
     int rear;//队尾的下一个索引(即将入队的下标)
     int usedSize = 0;//队列元素大小
 
     /** Initialize your data structure here. Set the size of the queue to be k. */
     public CircularQueue(int k) {
-        this.elem = new int[k];
+        this.elem = (T[]) new Object[k];
     }
 
     /** Insert an element into the circular queue. Return true if the operation is successful. */
-    public boolean enQueue(int value) {
+    public boolean enQueue(T value) {
         if (isFull()) {
             return false;
         }
@@ -33,17 +33,17 @@ public class CircularQueue {
     }
 
     /** Get the front item from the queue. */
-    public int Front() {
+    public T Front() {
         if(isEmpty()) {
-            return -1;
+            return null;
         }
         return this.elem[this.front];
     }
 
     /** Get the last item from the queue. */
-    public int Rear() {
+    public T Rear() {
         if(isEmpty()) {
-            return -1;
+            return null;
         }
         return this.rear == 0 ? this.elem[this.elem.length-1] : this.elem[this.rear-1];
     }
@@ -61,14 +61,14 @@ public class CircularQueue {
     public static void main(String[] args) {
 
         System.out.println(-1%7);
-        CircularQueue circularQueue = new CircularQueue(5);
-        circularQueue.enQueue(1);
-        circularQueue.enQueue(2);
-        circularQueue.enQueue(3);
-        circularQueue.enQueue(4);
+        CircularQueue<Character> circularQueue = new CircularQueue<>(10);
+        circularQueue.enQueue('1');
+        circularQueue.enQueue('2');
+        circularQueue.enQueue('3');
+        circularQueue.enQueue('4');
         System.out.println(circularQueue.Rear());
         circularQueue.deQueue();
-        circularQueue.enQueue(4);
+        circularQueue.enQueue('4');
 
     }
 }
