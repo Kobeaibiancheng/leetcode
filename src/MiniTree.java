@@ -2,7 +2,7 @@ class TreeNode {
 
 }
 public class MiniTree {
-    public static TreeNode miniSpanningTree() {
+    /*public static TreeNode miniSpanningTree() {
 
-    }
+    }*/
 }
