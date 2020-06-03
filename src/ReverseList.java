@@ -6,7 +6,7 @@ class ListNode{
         this.val = val;
     }
 }
-public class SingleList {
+public class ReverseList {
 
     /**
      * 反转单链表
