@@ -10,7 +10,7 @@ public class Print1ToMaxOfNDigits_1 {
         }
     }
     private static boolean increment(char[] arr) {
-
+        return true;
     }
 
     private static void printNumber(char[] arr) {
@@ -20,7 +20,6 @@ public class Print1ToMaxOfNDigits_1 {
 
     /**
      * 这样的代码 当 n 很大的时候，不管是int还是long long都会溢出
-     * @param n
      */
     /*public static void print1ToMaxOfNDigits_1(int n) {
         int max = 1;
