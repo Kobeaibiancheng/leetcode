@@ -1,3 +1,5 @@
+import java.util.List;
+
 class ListNode{
     int val;
     ListNode next;
@@ -39,6 +41,37 @@ public class SingleList {
             System.out.print(cur.val +" ");
             cur = cur.next;
         }
+    }
+
+    /**
+     * 合并两个排序链表
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public static ListNode mergeTwoList(ListNode headA, ListNode headB) {
+        if (headA == null && headB == null) {
+            return null;
+        }
+        ListNode newHead = new ListNode(-1);
+        ListNode cur = newHead;
+        while (headA != null && headB != null) {
+            if (headA.val < headB.val) {
+                cur.next = headA;
+                headA = headA.next;
+            }else {
+                cur.next = headB;
+                headB = headB.next;
+            }
+            cur = cur.next;
+        }
+        if (headA != null) {
+            cur.next = headA;
+        }else {
+            cur.next = headB;
+        }
+        return newHead.next;
+
     }
 
     public static void main(String[] args) {
