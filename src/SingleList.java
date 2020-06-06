@@ -45,6 +45,7 @@ public class SingleList {
 
     /**
      * 合并两个排序链表
+     * 新创建的一个 m+n 个节点的链表    并非原到合并
      * @param headA
      * @param headB
      * @return
@@ -65,11 +66,7 @@ public class SingleList {
             }
             cur = cur.next;
         }
-        if (headA != null) {
-            cur.next = headA;
-        }else {
-            cur.next = headB;
-        }
+        cur.next = headA != null ? headA : headB;
         return newHead.next;
 
     }
