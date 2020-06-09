@@ -91,7 +91,7 @@ public class SingleList {
             l2.next = mergeTwoLists(l1,l2.next);
             return l2;
         }
-        
+
     }
     public static void main(String[] args) {
         ListNode a = new ListNode(1);
