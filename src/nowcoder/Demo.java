@@ -48,11 +48,29 @@ public class Demo {
         System.out.println("字母字符："+sumChar);
         System.out.println("其他类型字符："+sumOther);
     }
+
+    //二分查找算法
+    public static int BinarySearch(int[] arr,int low,int high,int key){
+        while(low <= high) {
+            int mid = (high - low)/2 + low;
+            if (arr[mid] == key) {
+                return mid;
+            }else if(arr[mid] > key) {
+                high = mid-1;
+            }else {
+                low = mid +1;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
+        int[] arr = {1,2,3,4,5,6,30,40};
+        System.out.println(BinarySearch(arr,0,arr.length-1,1));
+
+        //Scanner sc = new Scanner(System.in);
+        //String str = sc.nextLine();
         //char[] arr = str.toCharArray();
-        countChar(str);
+        //countChar(str);
 
 
 
