@@ -1,7 +1,11 @@
 package xj915;
+
+import java.util.ArrayList;
+
 import java.util.*;
 public class Demo3 {
-    public static void main(String[] args) {
+
+    public static void MaAnDian(){
 
         Scanner sc = new Scanner(System.in);
         int m = sc.nextInt();
@@ -39,6 +43,54 @@ public class Demo3 {
         }
         System.out.println("马鞍点的个数是"+count);
 
+    }
+
+    /**
+     * 完全数
+     */
+    public static void CompleteNumber(){
+        //循环产生0-10000
+        for (int i = 1; i < 10000; i++) {
+            int sum = 0;
+            for (int j = 1; j <= i/2; j++) {//因数只会小于等于他本身除以2
+                if (i%j == 0){//代表能够整除，那这个数就是因数
+                    sum = sum+j;
+                }
+            }
+            if (sum == i){
+                System.out.print(i+" ");
+                //求素数p
+                for (int j = 0; j <= sum/2; j++) {
+                    if (sum == Math.pow(2,(j-1))*(Math.pow(2,j)-1)){
+                        System.out.print(j);
+                    }
+                }
+                System.out.println();
+            }
+        }
+    }
+    public static void main(String[] args) {
+        CompleteNumber();
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        System.out.println(list1.size());
+        System.out.println();
+        System.out.println("这下面是队列吗？");
+        Queue<Integer> list2 = new LinkedList<>();
+        list2.offer(1);
+        list2.offer(2);
+        list2.offer(3);
+        list2.offer(4);
+        System.out.println(list2.peek());
+        System.out.println(list2.poll());
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        System.out.println("这下面是栈吗？");
+        System.out.println(stack.pop());
+        System.out.println(stack.peek());
         /*for (int i = 0; i <= 9999; i++) {
             int a = i/1000;
             int b = i/100%10;
