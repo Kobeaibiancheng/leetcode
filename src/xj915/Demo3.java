@@ -1,5 +1,7 @@
 package xj915;
 
+import com.sun.istack.internal.localization.NullLocalizable;
+
 import java.util.ArrayList;
 
 import java.util.*;
@@ -69,8 +71,93 @@ public class Demo3 {
             }
         }
     }
+    //调整数组的数字顺序，使得奇数位于数组的前面，偶数位于数组的后面，并且相对位置不变
+    public static void switchNum(int[] arr){
+        int i = arr.length-1;
+        int count = 0;
+        while (i > count){
+            //从后面找到一个奇数
+            while (arr[i]%2 != 1){
+                i--;
+            }
+            int tmp = arr[i];
+            //移动元素
+            for (int j = i; j > 0; j--) {
+                arr[j] = arr[j-1];
+            }
+            //放在下标为0的位置
+            arr[0] = tmp;
+            count++;
+        }
+    }
+    public static ListNode firstPubListNode(ListNode head1,ListNode head2){
+        int length1 = 0;
+        int length2 = 0;
+        ListNode cur = head1;
+        while (cur != null){
+            cur = cur.next;
+            length1++;
+        }
+        cur = head2;
+        while (cur != null){
+            cur = cur.next;
+            length2++;
+        }
+        int i = length1-length2;
+        if (i>0){
+            while (i > 0){
+                head1 = head1.next;
+                i--;
+            }
+            while (head1 != head2){
+                head1 = head1.next;
+                head2 = head2.next;
+            }
+        }else {
+            while (i < 0){
+                head2 = head2.next;
+                i++;
+            }
+            while (head1 != head2){
+                head1 = head1.next;
+                head2 = head2.next;
+            }
+        }
+        return head1;
+    }
     public static void main(String[] args) {
-        CompleteNumber();
+        ListNode head1 = new ListNode();
+        ListNode head2 = new ListNode();
+        ListNode node1 = new ListNode();
+        ListNode node2 = new ListNode();
+        ListNode node3 = new ListNode();
+        ListNode node4 = new ListNode();
+        ListNode node5 = new ListNode();
+        head1.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        ListNode node6 = new ListNode();
+        ListNode node7 = new ListNode();
+        ListNode node8 = new ListNode();
+        ListNode node9 = new ListNode();
+        head2.next = node6;
+        node6.next = node7;
+        node7.next = node3;
+        node3.val = 1;
+
+        System.out.println(firstPubListNode(head1,head2).val);
+
+
+
+        /*int[] arr = {1,2,3,4,5,6,7,8,9,10};
+        System.out.println(Arrays.toString(arr));
+        switchNum(arr);
+
+        System.out.println(Arrays.toString(arr));*/
+
+        /*CompleteNumber();
         ArrayList<Integer> list1 = new ArrayList<>();
         list1.add(10);
         System.out.println(list1.size());
@@ -90,7 +177,7 @@ public class Demo3 {
         stack.push(4);
         System.out.println("这下面是栈吗？");
         System.out.println(stack.pop());
-        System.out.println(stack.peek());
+        System.out.println(stack.peek());*/
         /*for (int i = 0; i <= 9999; i++) {
             int a = i/1000;
             int b = i/100%10;
