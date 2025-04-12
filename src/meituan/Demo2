@@ -1,0 +1,89 @@
+package meituan;
+
+import java.util.*;
+
+public class Demo2 {
+
+    /**
+     * 判断这个数组有几个子数组是全排列数组（子数组长度等于子数组元素个数）和（子数组元素大小不能大于子数组长度）
+     *
+     *
+     *
+     * 我写的算法复杂度太高了，只acc了20%
+     * @param args
+     */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+
+        int n = in.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++){
+            arr[i] = in.nextInt();
+        }
+
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            int num = 1;
+            while(num <= arr[i]){
+                list.add(num);
+                num++;
+            }
+        }
+
+        //单个元素
+        /*int ret1 = 0;
+        Set<Integer> set1 = new HashSet<>();
+        for(int i = 0; i < list.size(); i++){
+            if(!set1.contains(list.get(i))){
+                set1.add(list.get(i));
+            }
+        }*/
+
+        //多个元素
+        int ret2 = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+
+
+            for(int j = i; j < list.size(); j++) {
+
+                Set<Integer> set2 = new HashSet<>();
+                for (int k = i; k <= j; k++){
+                    if(list.get(k) > j-i+1){//如果当前元素大于数组的长度，跳出循环
+                        break;
+                    }
+                    if(!set2.contains(list.get(k))){//如果集合元素不重复，添加到set中
+                        set2.add(list.get(k));
+                    }
+                }
+
+
+                if(set2.size() == j-i+1){//如果set中元素等于子数组长度，则是一个有效的子数组
+                    ret2++;
+                }
+
+            }
+
+
+
+
+
+
+
+
+        }
+        System.out.println(ret2);
+
+
+
+
+
+
+        /*while (in.hasNextInt()) { // 注意 while 处理多个 case
+            int a = in.nextInt();
+            int b = in.nextInt();
+            System.out.println(a + b);
+        }*/
+    }
+}
