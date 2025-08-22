@@ -52,5 +52,48 @@ public class TestSynchronized {
         });
         t3.start();
         t4.start();
+
+
+
+        TestSynchronized testSynchronized = new TestSynchronized();
+        Thread t5 = new Thread(() -> {
+            synchronized (testSynchronized){
+                System.out.println(Thread.currentThread().getId()+"获取实例对象的锁");
+                System.out.println("修改name为" + testSynchronized.name+Thread.currentThread().getId());
+                System.out.println(Thread.currentThread().getId()+"释放实例对象的锁");
+            }
+        });
+
+        Thread t6 = new Thread(() -> {
+            synchronized (testSynchronized){
+                System.out.println(Thread.currentThread().getId()+"获取实例对象的锁");
+                System.out.println("修改name为" + testSynchronized.name+Thread.currentThread().getId());
+                System.out.println(Thread.currentThread().getId()+"释放实例对象的锁");
+            }
+        });
+
+        t5.start();
+
+        t6.start();
+
+        Thread t7 = new Thread(() -> {
+            synchronized (TestSynchronized.class){
+                System.out.println(Thread.currentThread().getId() +"获取类的class对象锁");
+                System.out.println(Thread.currentThread().getId() +"释放类的class对象锁");
+
+            }
+        });
+
+        Thread t8 = new Thread(() -> {
+            synchronized (TestSynchronized.class){
+                System.out.println(Thread.currentThread().getId() +"获取类的class对象锁");
+                System.out.println(Thread.currentThread().getId() +"释放类的class对象锁");
+            }
+        });
+        t7.start();
+        t8.start();
+
+
+
     }
 }
